@@ -1,0 +1,8 @@
+syntax: glob
+
+#Binary files
+*.pyc
+*.exe
+*.o
+*.obj
+*~
