@@ -14,3 +14,15 @@
         (else (sumsquares num1 num2))
     )
 )
+
+(define (test_ex1_3 x) 
+    ; testing is hard in Scheme.
+    ((define expected 13)
+    (if (not (= expected (ex1_3 1 2 3)))
+        (display "F"))
+    (if (not (= expected (ex1_3 3 2 1)))
+        (display "F"))
+    (if (not (= expected (ex1_3 2 1 3)))
+        (display "F"))
+    )
+)
