@@ -15,14 +15,15 @@
     )
 )
 
-(define (test_ex1_3 x) 
+(define (<> x y) (not (= x y)))
+
+(define (test x)
     ; testing is hard in Scheme.
     ((define expected 13)
-    (if (not (= expected (ex1_3 1 2 3)))
-        (display "F"))
-    (if (not (= expected (ex1_3 3 2 1)))
-        (display "F"))
-    (if (not (= expected (ex1_3 2 1 3)))
-        (display "F"))
+    (cond
+        ((<> expected (ex1_3 1 2 3)) (display "Failed"))
+        ((<> expected (ex1_3 2 1 3)) (display "Failed"))
+        ((<> expected (ex1_3 3 2 1)) (display "Failed"))
+        )
     )
 )
