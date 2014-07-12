@@ -15,7 +15,9 @@
 (new-if (= 1 1) 0 5)
 ; 0
 
-; Delighted, Alyssa uses new-if to rewrite the square-root program:
+; these are functions that the sqrt-iter program needs.
+
+(define (square x) (* x x))
 
 (define (good-enough? guess x)
   (< (abs (- (square guess) x)) 0.001))
@@ -27,12 +29,26 @@
   (average guess (/ x guess)))
 
 
+; Delighted, Alyssa uses new-if to rewrite the square-root program:
 
-(define (sqrt-iter guess x)
+(define (sqrt-iter-new guess x)
+  (display "here")
   (new-if (good-enough? guess x)
           guess
-          (sqrt-iter (improve guess x)
-                     x)))
+          (sqrt-iter-new (improve guess x) x)))
+
+; this is the original sqrt-iter program.
+(define (sqrt-iter guess x)
+  (if (good-enough? guess x)
+          guess
+          (sqrt-iter (improve guess x) x)))
 
 ; What happens when Alyssa attempts to use this to compute square roots?
 ; Explain.
+
+; Solution!
+; Because new-if is a function, it must evaluate all of its arguments before it
+; returns a value.  So it evaluate (good-enough? guess x), guess, AND
+; (sqrt-iter-new (improve guess x) x) every time it is called, no matter what.
+; Even when it meets the good-enough? criteria, it evaluates both other
+; arguments.  And recurses forever.
