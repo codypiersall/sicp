@@ -10,3 +10,42 @@
 ; and large numbers?
 
 (load "sqrt.scm")
+
+(define (test x)
+        (printf "sqrt(~a) != ~a\n" x (mysqrt x))
+)
+
+(define (test-small)
+        (test 1E-18)
+)
+
+(define (test-big)
+        (test 1.1E200)
+)
+
+;(test-small)
+; (test-big) ; goes into infinite loop
+
+; (test-small) fails because 1E-4 isn't nearly small enough to get an
+; approximately correct answer for 1E-18; the right answer would be 1E-9.
+;
+; (test-big) goes into an infinite loop because the precision can't ever get
+; down to 1E-4 due to floating point limitations.
+
+(define (new-sqrt x)
+        (define (good-enough? this-guess last-guess)
+                (if (= (abs (- this-guess last-guess)) 0)
+                    #t
+                    #f
+                )
+        )
+
+        (define (iterate this-guess last-guess)
+                (if (good-enough? this-guess last-guess)
+                    this-guess
+                    (iterate (improve this-guess x) this-guess)
+                )
+        )
+
+        (iterate 1 0)
+)
