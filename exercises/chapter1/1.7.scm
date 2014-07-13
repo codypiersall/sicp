@@ -34,7 +34,7 @@
 
 (define (new-sqrt x)
         (define (good-enough? this-guess last-guess)
-                (if (= (abs (- this-guess last-guess)) 0)
+                (if (= this-guess last-guess)
                     #t
                     #f
                 )
