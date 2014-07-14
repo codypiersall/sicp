@@ -49,7 +49,14 @@
 ; g returns (expt 2 n)
 
 (define (h n) (A 2 n))
-; this one's tricky.
+; h returns (expt 2 (expt 2 (expt 2 ... 2)))
+; raises 2 to the 2 to the 2, n times.
+; (h 1) == 2
+; (h 2) == 2^2
+; (h 3) == (2^(2^2))
+; (h 4) == (2^(2^(2^2)))
+;
+; and so on.
 
 (define (k n) (* 5 n n))
 ; Returns 5 * n^2
