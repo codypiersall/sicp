@@ -18,13 +18,13 @@
 (define (double x) (* x 2))
 (define (halve x) (/ x 2))
 
-(define (mult-iter x y addend)
-  (cond ((= y 1) (+ x addend))
-        ((even? y) (mult-iter (double x) (halve y) addend))
-        (else (mult-iter x (- y 1) (+ addend x)))
+(define (mult-iter x y)
+  (cond ((= y 1) x)
+        ((even? y) (mult-iter (double x) (halve y)))
+        (else (+ x (mult-iter x (- y 1))))
   )
 )
 
 (define (mult x y)
- (mult-iter x y 0)
+ (mult-iter x y)
 )
