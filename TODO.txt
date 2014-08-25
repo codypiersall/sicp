@@ -1,4 +1,5 @@
 TODO
 ====
 
-ex. 1.3 tests are failures.
+Exercise 1.13
+Exercise 1.19 (requires pencil and paper, for me at least)
