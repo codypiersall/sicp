@@ -14,4 +14,16 @@
 ; the normal-order evaluation of (gcd 206 40)? In the applicative-order
 ; evaluation?
 
+; normal order:
+(gcd 204 40)
+; ->
+(gcd 40 (remainder 204 40)) ; (remainder 204 40) == 4
+(gcd 40 4)
+; ->
+(gcd 40 (remainder 4 40)) ; (remainder 4 40) == 0
+(gcd 4 0)
+4
+
+; 2 remainder operations are performed
+
 
