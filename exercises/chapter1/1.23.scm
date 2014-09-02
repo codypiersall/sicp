@@ -18,12 +18,6 @@
 ; functions in 1.22.scm will use the functions defined here when called.
 
 (load "1.22.scm")
-(define (square x) (* x x))
-
-(define (smallest-divisor n)
-    (find-divisor n 2))
-(define (divides? a b)
-    (= (remainder b a) 0))
 (define (find-divisor n test-divisor)
     (cond ((> (square test-divisor) n) n)
                   ((divides? test-divisor n) test-divisor)
