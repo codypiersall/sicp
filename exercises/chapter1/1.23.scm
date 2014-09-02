@@ -27,3 +27,13 @@
   (if (= x 2)
     3
     (+ x 2)))
+
+; running time-the-primes (defined in 1.22.scm) gives new, smaller run times
+; for all the prime numbers tested.
+;
+; For the first three, the time went from 195 ms to  122 ms;
+; For the second, the time went from 616 ms to 378 ms;
+; For the third, the time went from 1948 ms to 1198 ms
+;
+; The time doesn't quite go in half, but that's probabby because it takes
+; longer to find the next divisor than it used to.
