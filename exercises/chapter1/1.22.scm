@@ -8,9 +8,7 @@
 (load "1.21.scm")
 (define (prime? x) (= x (smallest-divisor x)))
 (define (timed-prime-test n)
-
     (display n)
-
     (start-prime-test n (current-milliseconds))
     (display "\n"))
 (define (start-prime-test n start-time)
@@ -18,8 +16,7 @@
       (report-prime (- (current-milliseconds) start-time))))
 (define (report-prime elapsed-time)
     (display " *** ")
-    (display elapsed-time)
-    )
+    (display elapsed-time))
 ; Using this procedure, write a procedure search-for-primes that checks the
 ; primality of consecutive odd integers in a specified range. Use your
 ; procedure to find the three smallest primes larger than 1000; larger than
@@ -56,18 +53,19 @@
 ; reveals that 10000000000037, 10000000000051, and 10000000000099 are the last.
 
 ; run this to see the results on the three prime numbers
+(define ie inexact->exact)
 (define (time-the-primes)
-  (timed-prime-test (+ 3 1E11))
-  (timed-prime-test (+ 19 1E11))
-  (timed-prime-test ( + 63 1E11))
+  (timed-prime-test (ie (+ 3 1E11)))
+  (timed-prime-test (ie (+ 19 1E11)))
+  (timed-prime-test (ie ( + 63 1E11)))
 
-  (timed-prime-test (+ 39 1E12))
-  (timed-prime-test (+ 61 1E12))
-  (timed-prime-test (+ 63 1E12))
+  (timed-prime-test (ie (+ 39 1E12)))
+  (timed-prime-test (ie (+ 61 1E12)))
+  (timed-prime-test (ie (+ 63 1E12)))
 
-  (timed-prime-test (+ 37 1E13))
-  (timed-prime-test (+ 51 1E13))
-  (timed-prime-test (+ 99 1E13))
+  (timed-prime-test (ie (+ 37 1E13)))
+  (timed-prime-test (ie (+ 51 1E13)))
+  (timed-prime-test (ie (+ 99 1E13)))
 )
 
 ; running time-the-primes shows that the first three take 195 ms,
